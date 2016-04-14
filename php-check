@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[[ "$1" = "recent" ]] && ADDITONAL_OPTIONS="-mmin -240"
+
+find . $ADDITONAL_OPTIONS -name "*.php" -print0 | xargs -0 -n1 -P10 php -l | grep -v 'No syntax errors'
+
+if [ "$?" -eq "0" ]; then
+  exit 1
+else
+  exit 0
+fi
