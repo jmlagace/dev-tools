@@ -1,6 +1,10 @@
 #!/bin/sh
 
-[[ "$1" = "recent" ]] && ADDITONAL_OPTIONS="-mmin -240"
+if [ "$1" = "recent" ]; then
+	ADDITONAL_OPTIONS="-mmin -240"
+else
+	ADDITONAL_OPTIONS=""
+fi
 
 find . $ADDITONAL_OPTIONS -name "*.rb" -print0 | xargs -0 -n1 -P10 ruby -c | grep -v 'Syntax OK'
 
