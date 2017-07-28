@@ -4,7 +4,7 @@ if [ "$1" = "recent" ]; then
 	ADDITONAL_OPTIONS="-mmin -240"
 else
 	ADDITONAL_OPTIONS=""
-find
+fi
 
 find . $ADDITONAL_OPTIONS -name "*.php" -print0 | xargs -0 -n1 -P10 php -l | grep -v 'No syntax errors'
 
