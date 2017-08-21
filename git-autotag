@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 TARGET_PREFIX=${1:-release}
 TARGET_BASE=$TARGET_PREFIX-`date +%Y%m%d`
