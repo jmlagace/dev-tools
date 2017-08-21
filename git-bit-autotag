@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+TARGET_PREFIX=${1:-release}
+TARGET_BASE=$TARGET_PREFIX-`date +%Y%m%d`
+TARGET_BRANCH=$TARGET_BASE-$BITBUCKET_BUILD_NUMBER
+git tag $TARGET_BRANCH
+git push origin $TARGET_BRANCH
+echo "tagging complete under tag $TARGET_BRANCH"
