@@ -6,7 +6,7 @@ else
 	ADDITONAL_OPTIONS=""
 fi
 
-find . $ADDITONAL_OPTIONS -name "*.rb" -print0 | xargs -0 -n1 -P10 ruby -c | grep -v 'Syntax OK'
+find . $ADDITONAL_OPTIONS -type f -prune -name "*.rb" -print0 | xargs -0 -n1 -P10 ruby -c | grep -v 'Syntax OK'
 
 if [ "$?" -eq "0" ]; then
   exit 1
